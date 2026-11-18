@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>KUROpet beta test — first 10 get it free</title>
+<meta name="description" content="KUROpet is a living virtual pet that lives inside your Muse. First 10 to claim in the Reddit comments get the blueprint PDF free." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f7f5f0;
+    --bg-dot:#e8e2d6;
+    --surface:#ffffff;
+    --surface-2:#fff8ec;
+    --ink:#1a1815;
+    --ink-2:#5c564c;
+    --ink-3:#8a8378;
+    --line:#e6e0d3;
+    --accent:#e85a1e;
+    --accent-dark:#c94a14;
+    --accent-ink:#ffffff;
+    --teal:#0e6b5e;
+    --teal-bg:#e6f2ef;
+    --amber-bg:#fef3c7;
+    --amber-ink:#92400e;
+    --shadow:0 20px 50px rgba(26,24,21,.10), 0 2px 8px rgba(26,24,21,.06);
+    --radius:20px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131110;
+      --bg-dot:#24201c;
+      --surface:#1e1b18;
+      --surface-2:#2a2118;
+      --ink:#f5f0e8;
+      --ink-2:#c9c0b2;
+      --ink-3:#9a9082;
+      --line:#332e28;
+      --accent:#ff6b2c;
+      --accent-dark:#ff7d42;
+      --teal:#3ec9b6;
+      --teal-bg:#162e2a;
+      --amber-bg:#2e2410;
+      --amber-ink:#fcd34d;
+      --shadow:0 20px 50px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"DM Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+    background:var(--bg);
+    background-image:radial-gradient(var(--bg-dot) 1.15px, transparent 1.15px);
+    background-size:22px 22px;
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{
+    max-width:700px;
+    margin:0 auto;
+    padding:28px 20px 48px;
+  }
+  @media (min-width:640px){ .wrap{padding:44px 24px 64px} }
+
+  /* Top label row */
+  .toprow{
+    display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    margin-bottom:22px;
+  }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;
+    padding:8px 12px; border-radius:999px;
+    background:var(--ink); color:var(--bg);
+  }
+  .pill i{width:7px;height:7px;border-radius:50%;background:#4ade80;display:block; box-shadow:0 0 0 4px rgba(74,222,128,.22)}
+  .price-note{font-size:13.5px; font-weight:600; color:var(--ink-2)}
+  .price-note s{color:var(--ink-3); font-weight:500}
+  .price-note strong{color:var(--accent)}
+
+  /* Card */
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .card-main{padding:32px 26px 28px}
+  @media (min-width:640px){ .card-main{padding:42px 42px 34px} }
+
+  .creature{
+    display:flex; align-items:flex-start; gap:18px; margin-bottom:22px;
+  }
+  .creature-art{
+    flex:0 0 auto; width:72px; height:72px; border-radius:18px;
+    background:var(--surface-2); border:1px solid var(--line);
+    display:grid; place-items:center;
+  }
+  .creature-text{padding-top:2px}
+  .creature-text p{margin:0; font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--teal)}
+  .creature-text span{display:block; margin-top:2px; font-size:14px; color:var(--ink-2); line-height:1.45; text-transform:none; letter-spacing:0; font-weight:500}
+
+  h1{
+    font-family:"DM Serif Display", Georgia, serif;
+    font-weight:400;
+    font-size:clamp(36px, 7.2vw, 54px);
+    line-height:.98;
+    letter-spacing:-.01em;
+    margin:0 0 18px;
+  }
+  h1 em{font-style:italic; color:var(--accent)}
+  .lead{
+    font-size:18px; line-height:1.65; color:var(--ink-2); margin:0;
+  }
+  .lead strong{color:var(--ink); font-weight:700}
+  @media (min-width:640px){ .lead{font-size:19px} }
+
+  /* How it works */
+  .steps{
+    display:grid; grid-template-columns:1fr; gap:10px; margin:26px 0 0;
+  }
+  @media (min-width:560px){ .steps{grid-template-columns:1fr 1fr 1fr} }
+  .step{
+    background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:14px 14px 12px;
+  }
+  .step b{
+    display:flex; align-items:center; gap:8px; font-size:13px; letter-spacing:.02em; margin-bottom:6px;
+  }
+  .step b span{
+    width:22px;height:22px;border-radius:50%; background:var(--ink); color:var(--bg);
+    display:grid; place-items:center; font-size:12px; flex:0 0 auto;
+  }
+  .step p{margin:0; font-size:13.5px; line-height:1.5; color:var(--ink-2)}
+
+  /* Deal box */
+  .deal{
+    margin-top:22px;
+    border:1.5px dashed color-mix(in srgb, var(--accent) 55%, var(--line));
+    background:var(--surface-2);
+    border-radius:16px;
+    padding:18px 18px 16px;
+  }
+  .deal-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;
+  }
+  .deal-head h2{margin:0; font-size:15px; font-weight:800; letter-spacing:.01em}
+  .deal-head span{font-size:12px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; background:var(--amber-bg); color:var(--amber-ink); padding:6px 9px; border-radius:999px}
+
+  .spots{display:flex; gap:6px; margin:6px 0 14px; flex-wrap:wrap}
+  .spot{
+    width:28px;height:28px;border-radius:50%;
+    border:2px solid var(--accent);
+    display:grid; place-items:center; font-size:11px; font-weight:800; color:var(--accent);
+    background:var(--surface);
+  }
+  .spots-label{font-size:12.5px; color:var(--ink-2); margin:-6px 0 12px}
+
+  .deal ul{list-style:none; margin:0; padding:0; display:grid; gap:9px}
+  .deal li{display:flex; gap:10px; font-size:15px; line-height:1.5; color:var(--ink-2)}
+  .deal li strong{color:var(--ink)}
+  .check{
+    flex:0 0 auto; width:22px;height:22px;border-radius:50%; background:var(--teal-bg); color:var(--teal);
+    display:grid; place-items:center; margin-top:1px; font-size:13px; font-weight:900;
+  }
+
+  /* Download */
+  .download{padding:0 26px 28px}
+  @media (min-width:640px){ .download{padding:0 42px 36px} }
+  .btn{
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    width:100%; min-height:64px;
+    background:var(--accent); color:var(--accent-ink);
+    text-decoration:none; font-weight:800; font-size:18px; letter-spacing:.01em;
+    border-radius:16px; padding:18px 20px; text-align:center;
+    box-shadow:0 10px 24px rgba(232,90,30,.28);
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{background:var(--accent-dark); transform:translateY(-1px); box-shadow:0 14px 28px rgba(232,90,30,.32)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible{outline:3px solid var(--teal); outline-offset:3px}
+  .btn svg{flex:0 0 auto}
+  .btn small{display:block; font-size:13px; font-weight:600; opacity:.92; margin-top:2px; letter-spacing:0}
+  .btn-text{text-align:left; line-height:1.25}
+  .under-btn{
+    display:flex; justify-content:center; gap:14px; flex-wrap:wrap;
+    margin-top:12px; font-size:13px; color:var(--ink-3); font-weight:500; text-align:center;
+  }
+  .under-btn span{display:inline-flex; align-items:center; gap:6px}
+
+  /* Feedback */
+  .feedback{
+    border-top:1px solid var(--line);
+    padding:24px 26px 28px;
+    background:var(--bg);
+  }
+  @media (min-width:640px){ .feedback{padding:26px 42px 32px} }
+  .feedback h2{
+    font-family:"DM Serif Display", Georgia, serif; font-weight:400; font-size:24px; margin:0 0 8px; line-height:1.15;
+  }
+  .feedback p{margin:0; font-size:15.5px; line-height:1.65; color:var(--ink-2)}
+  .feedback p strong{color:var(--ink)}
+  .prompts{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+  .prompts span{
+    font-size:13px; font-weight:700; padding:8px 11px; border-radius:999px;
+    background:var(--surface); border:1px solid var(--line); color:var(--ink);
+  }
+
+  footer{
+    margin-top:20px; text-align:center; font-size:13px; color:var(--ink-3); line-height:1.6; padding:0 8px;
+  }
+  footer strong{color:var(--ink-2)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="toprow">
+      <span class="pill"><i></i> Beta test · Reddit</span>
+      <span class="price-note">Normally <s>$12 on Gumroad</s> &nbsp;·&nbsp; <strong>Free for the first 10</strong></span>
+    </div>
+
+    <article class="card">
+      <div class="card-main">
+        <div class="creature">
+          <div class="creature-art" aria-hidden="true">
+            <!-- Simple baby creature mark -->
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="24" cy="29" rx="14" ry="13" fill="#1a1815"/>
+              <ellipse cx="24" cy="29" rx="14" ry="13" fill="var(--ink)"/>
+              <circle cx="19" cy="27" r="2.6" fill="var(--surface)"/>
+              <circle cx="29" cy="27" r="2.6" fill="var(--surface)"/>
+              <circle cx="19.8" cy="27.6" r="1.1" fill="var(--ink)"/>
+              <circle cx="29.8" cy="27.6" r="1.1" fill="var(--ink)"/>
+              <path d="M21 33c1 1.2 5 1.2 6 0" stroke="var(--surface)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M17 17c1-3 4-5 7-5s6 2 7 5" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="24" cy="11" r="2.2" fill="var(--accent)"/>
+              <ellipse cx="13" cy="38" rx="4" ry="2" fill="var(--ink)" opacity=".9"/>
+              <ellipse cx="35" cy="38" rx="4" ry="2" fill="var(--ink)" opacity=".9"/>
+            </svg>
+          </div>
+          <div class="creature-text">
+            <p>KUROpet</p>
+            <span>A pet that actually lives — inside your Muse.</span>
+          </div>
+        </div>
+
+        <h1>KUROpet beta test — first 10 get it <em>free</em></h1>
+
+        <p class="lead">
+          KUROpet is a <strong>living virtual pet that lives inside your Muse</strong> — you hand the file to your Muse, it builds the room, and you raise a creature from a baby through its whole life. <strong>Real care, real consequences</strong> — neglect it and it can die.
+        </p>
+
+        <div class="steps" aria-label="How it works">
+          <div class="step">
+            <b><span>1</span> Download</b>
+            <p>Grab the blueprint PDF below while the link is live.</p>
+          </div>
+          <div class="step">
+            <b><span>2</span> Hand it to Muse</b>
+            <p>Give the file to your Muse and let it build the room.</p>
+          </div>
+          <div class="step">
+            <b><span>3</span> Raise it</b>
+            <p>Feed it, care for it, and watch it grow — day by day.</p>
+          </div>
+        </div>
+
+        <section class="deal" aria-labelledby="deal-title">
+          <div class="deal-head">
+            <h2 id="deal-title">The deal</h2>
+            <span>24 hours only</span>
+          </div>
+
+          <div class="spots" aria-hidden="true">
+            <span class="spot">1</span><span class="spot">2</span><span class="spot">3</span><span class="spot">4</span><span class="spot">5</span><span class="spot">6</span><span class="spot">7</span><span class="spot">8</span><span class="spot">9</span><span class="spot">10</span>
+          </div>
+          <p class="spots-label">10 free spots — claimed in the Reddit comments, first come, first served.</p>
+
+          <ul>
+            <li><span class="check">✓</span><span><strong>First 10 to claim in the comments</strong> get it free — just reply on the Reddit post to claim your spot.</span></li>
+            <li><span class="check">✓</span><span><strong>Normally $12 on Gumroad.</strong> Beta testers get the full blueprint for $0.</span></li>
+            <li><span class="check">✓</span><span><strong>The link dies in 24 hours</strong> or when 10 people claim — whichever comes first.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="download">
+        <a class="btn" href="https://muse.ai/files/823287394200818/1828447324939698/8tl3bgknugubr8wnefcbd953/kuropet-blueprint.pdf">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span class="btn-text">
+            Download the blueprint — free
+            <small>KUROpet Blueprint PDF · Claim in the comments first</small>
+          </span>
+        </a>
+        <div class="under-btn">
+          <span>⬇ Instant PDF download</span>
+          <span>·</span>
+          <span>No account needed</span>
+          <span>·</span>
+          <span>Works with your Muse</span>
+        </div>
+      </div>
+
+      <section class="feedback" aria-labelledby="feedback-title">
+        <h2 id="feedback-title">Got in? Come back and tell Cory how it went.</h2>
+        <p>
+          This beta only works if you report back. Reply on the Reddit post and tell Cory <strong>what you raised, what broke, and what your Muse did with it</strong> — the good, the weird, and the stuff that needs fixing.
+        </p>
+        <div class="prompts" aria-label="What to report back">
+          <span>What did you raise?</span>
+          <span>What broke?</span>
+          <span>What did your Muse do?</span>
+        </div>
+      </section>
+    </article>
+
+    <footer>
+      <strong>KUROpet</strong> — a living virtual pet for Muse, by Cory Brent.<br />
+      Free spots are counted by claims in the Reddit comments, not by downloads.
+    </footer>
+  </div>
+
+  <script data-goatcounter="https://murkafool.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
